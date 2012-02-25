@@ -1,0 +1,22 @@
+# Hosts module
+
+set your hosts file to {templatedir}/hosts/etc/hosts
+
+if that file is not exists, the module use template its own as default
+
+
+## manifest
+
+>  node 'production' {
+>    include hosts
+>  }
+
+
+## use other template file
+
+>  class dev_hosts inherits hosts {
+>    Hosts::Hosts_file["/etc/hosts"] { file => "hosts/etc/hosts.dev" }
+>  }
+>  class 'dev' {
+>    include dev_hosts
+>  }
