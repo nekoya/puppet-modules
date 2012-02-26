@@ -1,0 +1,17 @@
+Nagios module
+
+  only distribute plugins.
+
+  usage
+
+    include nagios
+
+----
+NRPE module
+
+  usage
+
+    class my_nrpe {
+      $nrpe_allowed_hosts = '10.1.0.1,10.1.0.2'
+      include nagios::nrpe
+    }
