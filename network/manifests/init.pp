@@ -16,6 +16,7 @@ class network {
 
     define resolver_config($file="network/etc/resolv.conf") {
         $module = "network"
+        if (!$network_resolver) { $network_resolver = ["8.8.8.8", "8.8.4.4"] }
         file { "$name":
             mode    => 644,
             owner   => "root",
