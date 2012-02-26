@@ -1,0 +1,1 @@
+*/1 * * * * root /usr/local/sbin/tt_1978_info_pcpu.sh >>/var/log/tt_info/tt_1978_info_pcpu.log 2>&1 ;
