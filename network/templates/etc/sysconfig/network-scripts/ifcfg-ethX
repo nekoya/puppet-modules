@@ -1,0 +1,6 @@
+DEVICE=<%= name %>
+ONBOOT=yes
+BOOTPROTO=none
+MASTER=bond0
+SLAVE=yes
+USERCTL=no
