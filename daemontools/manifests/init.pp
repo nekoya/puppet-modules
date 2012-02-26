@@ -2,9 +2,8 @@
 # daemontools module
 #
 
-class daemontools {
-    $module = "daemontools"
-    package { "$module":
+class daemontools::install {
+    package { "daemontools":
         name   => "daemontools-toaster",
         ensure => installed,
     }
@@ -14,14 +13,21 @@ class daemontools {
         mode    => 755,
         owner   => "root",
         group   => "root",
-        notify  => Service[$module],
+        notify  => Class["daemontools::service"],
         require => Package[$module],
     }
+}
 
-    service { "$module":
+class daemontools::service {
+    service { "daemontools":
         name    => "svscan",
         ensure  => running,
         enable  => true,
-        require => File["/etc/init.d/svscan"],
+        require => Class["daemontools::install"],
     }
+}
+
+class daemontools {
+    include daemontools::install
+    include daemontools::service
 }
